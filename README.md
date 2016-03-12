@@ -1,4 +1,4 @@
-# really bug, i will fix it ^^
+# really buggy, i will fix it ^^
 
 # simple-history
 
