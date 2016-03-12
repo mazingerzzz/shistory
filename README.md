@@ -1,3 +1,5 @@
+# really bug, i will fix it ^^
+
 # simple-history
 
 Find all history users and agregate it, sort by date and colorized
