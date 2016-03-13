@@ -15,9 +15,11 @@ users = {}
 hist_pwd = {}
 
 hist_file = '/.bash_history'
+
+# [{unixtimestamp: [user, command]
 hist_vrac = []
 
-# timestamp not sorted
+# timestamp list
 m_keys = []
 
 
