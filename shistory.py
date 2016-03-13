@@ -103,7 +103,7 @@ def colors_chg():
                 ) + bcolors.ENDC,
                 print bcolors.GREEN + ">" + bcolors.ENDC,
                 print bcolors.RED + current_cmd + bcolors.ENDC,
-                pass
+                hist_vrac[n][0]['999'] = hist_vrac[n][0][current_key]
 
 
 list_user_homedir()
