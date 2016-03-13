@@ -34,7 +34,7 @@ class bcolors:
 
 def list_user_homedir():
     for p in pwd.getpwall():
-        if p[6] == '/bin/bash':
+        if p[6] == '/bin/bash' and p[0] != 'operator':
             users[p[0]] = p[5]
 
 
@@ -92,21 +92,18 @@ def colors_chg():
                 c += 1
                 current_user = hist_vrac[n][0][current_key][0]
                 current_cmd = hist_vrac[n][0][current_key][1]
-                if current_user == "operator":
-                    pass
-                else:
-                    print "",
-                    print bcolors.BLUE + str(c) + bcolors.ENDC,
-                    print "",
-                    print bcolors.GREEN + current_user + bcolors.ENDC,
-                    print bcolors.YELLOW + (
-                        datetime.datetime.fromtimestamp(
-                            int(current_key)
-                        ).strftime('%Y-%m-%d %H:%M:%S')
-                    ) + bcolors.ENDC,
-                    print bcolors.GREEN + ">" + bcolors.ENDC,
-                    print bcolors.RED + current_cmd + bcolors.ENDC,
-                    pass
+                print "",
+                print bcolors.BLUE + str(c) + bcolors.ENDC,
+                print "",
+                print bcolors.GREEN + current_user + bcolors.ENDC,
+                print bcolors.YELLOW + (
+                    datetime.datetime.fromtimestamp(
+                        int(current_key)
+                    ).strftime('%Y-%m-%d %H:%M:%S')
+                ) + bcolors.ENDC,
+                print bcolors.GREEN + ">" + bcolors.ENDC,
+                print bcolors.RED + current_cmd + bcolors.ENDC,
+                pass
 
 
 list_user_homedir()
