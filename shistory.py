@@ -60,21 +60,24 @@ def hist_agreg():
     i = 0
     my_key = ""
     for user, path in hist_pwd.iteritems():
-        f = open(path, 'r')
-        for line in f:
-            if time_ok is True:
-                # on affect dans la liste la command
-                hist_vrac.append([{my_key: [user, line]}])
-                i += 1
-                time_ok = False
-            if re.search('^#10*[0-9]', line) and time_ok is False:
-                # on ajoute la key du dict
-                my_key = line.replace('#', '')
-                my_key = my_key.replace('\n', '')
-                time_ok = True
-            else:
-                pass
-        f.closed
+        try:
+            f = open(path, 'r')
+            for line in f:
+                if time_ok is True:
+                    # on affect dans la liste la command
+                    hist_vrac.append([{my_key: [user, line]}])
+                    i += 1
+                    time_ok = False
+                if re.search('^#10*[0-9]', line) and time_ok is False:
+                    # on ajoute la key du dict
+                    my_key = line.replace('#', '')
+                    my_key = my_key.replace('\n', '')
+                    time_ok = True
+                else:
+                    pass
+            f.closed
+        except IOError:
+            pass
 
 
 def colors_chg():
@@ -82,6 +85,7 @@ def colors_chg():
     c = 0
     for i in m_keys:
         for n in range(len(m_keys)):
+            # timestamp to string
             current_key = hist_vrac[n][0].keys()
             current_key = ''.join(map(str, current_key))
             if current_key == i:
@@ -102,6 +106,7 @@ def colors_chg():
                     ) + bcolors.ENDC,
                     print bcolors.GREEN + ">" + bcolors.ENDC,
                     print bcolors.RED + current_cmd + bcolors.ENDC,
+                    pass
 
 
 list_user_homedir()
