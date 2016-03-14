@@ -2,6 +2,7 @@
 
 #
 # todo : change color for root
+# todo : fix align
 # requirement : have a variable HISTTIMEFORMAT in your environment
 
 import pwd
@@ -83,7 +84,6 @@ def hist_agreg():
 
 
 def colors_chg():
-    n = 0
     c = 0
     for i in m_keys:
         for n in range(len(m_keys)):
