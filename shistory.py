@@ -49,8 +49,8 @@ def find_history():
 def timestamp_chg(my_date):
     t_stamp = (
             datetime.datetime.fromtimestamp(
-                        int(my_date)
-                    ).strftime('%Y-%m-%d %H:%M:%S')
+            int(my_date)
+            ).strftime('%Y-%m-%d %H:%M:%S')
     )
     return t_stamp
 
