@@ -12,7 +12,7 @@ import datetime
 
 # key = user / value = homedir
 users = {}
-# key = user / value = hist_pwd
+# key = user / value = hist_path
 hist_pwd = {}
 
 hist_file = '/.bash_history'
@@ -105,7 +105,7 @@ def colors_chg():
                 ) + bcolors.ENDC,
                 print bcolors.GREEN + ">" + bcolors.ENDC,
                 print bcolors.RED + current_cmd + bcolors.ENDC,
-                hist_vrac[n][0]['999'] = hist_vrac[n][0][current_key]
+                hist_vrac[n][0]['42'] = hist_vrac[n][0][current_key]
 
 
 def main():
