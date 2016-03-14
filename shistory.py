@@ -2,6 +2,7 @@
 
 #
 # todo : change color for root
+# todo : fix align
 # requirement : have a variable HISTTIMEFORMAT in your environment
 
 import pwd
@@ -11,7 +12,7 @@ import datetime
 
 # key = user / value = homedir
 users = {}
-# key = user / value = hist_pwd
+# key = user / value = hist_path
 hist_pwd = {}
 
 hist_file = '/.bash_history'
@@ -21,7 +22,6 @@ hist_vrac = []
 
 # timestamp list
 m_keys = []
-
 
 class bcolors:
     HEADER = '\033[95m'
@@ -46,9 +46,13 @@ def find_history():
             hist_pwd[k] = v + hist_file
 
 
-def timestamp_chg():
-    print "todo"
-
+def timestamp_chg(my_date):
+    t_stamp = (
+            datetime.datetime.fromtimestamp(
+                        int(my_date)
+                    ).strftime('%Y-%m-%d %H:%M:%S')
+    )
+    return t_stamp
 
 def hist_sort():
     for m_dict in hist_vrac:
@@ -82,8 +86,7 @@ def hist_agreg():
             pass
 
 
-def colors_chg():
-    n = 0
+def result():
     c = 0
     for i in m_keys:
         for n in range(len(m_keys)):
@@ -98,18 +101,19 @@ def colors_chg():
                 print bcolors.BLUE + str(c) + bcolors.ENDC,
                 print "",
                 print bcolors.GREEN + current_user + bcolors.ENDC,
-                print bcolors.YELLOW + (
-                    datetime.datetime.fromtimestamp(
-                        int(current_key)
-                    ).strftime('%Y-%m-%d %H:%M:%S')
-                ) + bcolors.ENDC,
+                print bcolors.YELLOW + timestamp_chg(current_key) + bcolors.ENDC,
                 print bcolors.GREEN + ">" + bcolors.ENDC,
                 print bcolors.RED + current_cmd + bcolors.ENDC,
-                hist_vrac[n][0]['999'] = hist_vrac[n][0][current_key]
+                hist_vrac[n][0]['42'] = hist_vrac[n][0][current_key]
 
 
-list_user_homedir()
-find_history()
-hist_agreg()
-hist_sort()
-colors_chg()
+def main():
+    list_user_homedir()
+    find_history()
+    hist_agreg()
+    hist_sort()
+    result()
+
+
+if __name__ == "__main__":
+    main()
