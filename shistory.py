@@ -108,8 +108,13 @@ def colors_chg():
                 hist_vrac[n][0]['999'] = hist_vrac[n][0][current_key]
 
 
-list_user_homedir()
-find_history()
-hist_agreg()
-hist_sort()
-colors_chg()
+def main():
+    list_user_homedir()
+    find_history()
+    hist_agreg()
+    hist_sort()
+    colors_chg()
+
+
+if __name__ == "__main__":
+    main()
