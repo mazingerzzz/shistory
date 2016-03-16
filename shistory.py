@@ -141,7 +141,6 @@ def result():
                 current_cmd = hist_vrac[n][0][current_key][1]
                 print left_space(c),
                 print bcolors.BLUE + str(c) + bcolors.ENDC,
-                print "",
                 print bcolors.GREEN + right_space(current_user) + bcolors.ENDC,
                 print bcolors.GREEN + current_user + bcolors.ENDC,
                 print bcolors.YELLOW + timestamp_chg(current_key) + bcolors.ENDC,
