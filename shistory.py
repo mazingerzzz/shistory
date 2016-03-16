@@ -88,7 +88,27 @@ def hist_agreg():
             pass
 
 
-def fix_space_user():
+def left_space(c):
+    l_space_nbr = 0
+    len_c = 0
+    nbr_line = 0
+    nbr_line = len(str(len(m_keys)))
+    len_c = len(str(c))
+    if c == 1:
+        l_space_nbr = nbr_line - len_c + 1
+        return multi_space(l_space_nbr)
+        pass
+    l_space_nbr = nbr_line - len_c
+    return multi_space(l_space_nbr)
+
+
+def right_space(user):
+    r_space_nbr = 0
+    r_space_nbr = max_len_user() - len(user)
+    return multi_space(r_space_nbr)
+
+
+def max_len_user():
     user = []
     maxi = ""
     user_maxi = []
@@ -99,9 +119,17 @@ def fix_space_user():
     return maxi
 
 
+def multi_space(space_nbr):
+    space = ""
+    for i in range(space_nbr):
+        space += " "
+    if space_nbr == 0:
+        space = ""
+    return space
+
+
 def result():
     c = 0
-    col1 = ""
     for i in m_keys:
         for n in range(len(m_keys)):
             # timestamp to string
@@ -111,14 +139,10 @@ def result():
                 c += 1
                 current_user = hist_vrac[n][0][current_key][0]
                 current_cmd = hist_vrac[n][0][current_key][1]
-                # fix line 1
-                if c == 1:
-                    space1 = " "
-                else:
-                    space1 = ""
-                print space1,
+                print left_space(c),
                 print bcolors.BLUE + str(c) + bcolors.ENDC,
                 print "",
+                print bcolors.GREEN + right_space(current_user) + bcolors.ENDC,
                 print bcolors.GREEN + current_user + bcolors.ENDC,
                 print bcolors.YELLOW + timestamp_chg(current_key) + bcolors.ENDC,
                 print bcolors.GREEN + ">" + bcolors.ENDC,
@@ -132,7 +156,6 @@ def main():
     hist_agreg()
     hist_sort()
     result()
-    fix_space_user()
 
 
 if __name__ == "__main__":
