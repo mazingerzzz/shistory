@@ -23,6 +23,7 @@ hist_vrac = []
 # timestamp list
 m_keys = []
 
+
 class bcolors:
     HEADER = '\033[95m'
     BLUE = '\033[94m'
@@ -53,6 +54,7 @@ def timestamp_chg(my_date):
             ).strftime('%Y-%m-%d %H:%M:%S')
     )
     return t_stamp
+
 
 def hist_sort():
     for m_dict in hist_vrac:
@@ -86,8 +88,20 @@ def hist_agreg():
             pass
 
 
+def fix_space_user():
+    user = []
+    maxi = ""
+    user_maxi = []
+    for k, v in users.iteritems():
+        user.append([k])
+    user_maxi = max(user)
+    maxi = len(''.join(map(str, user_maxi)))
+    return maxi
+
+
 def result():
     c = 0
+    col1 = ""
     for i in m_keys:
         for n in range(len(m_keys)):
             # timestamp to string
@@ -97,7 +111,12 @@ def result():
                 c += 1
                 current_user = hist_vrac[n][0][current_key][0]
                 current_cmd = hist_vrac[n][0][current_key][1]
-                print "",
+                # fix line 1
+                if c == 1:
+                    space1 = " "
+                else:
+                    space1 = ""
+                print space1,
                 print bcolors.BLUE + str(c) + bcolors.ENDC,
                 print "",
                 print bcolors.GREEN + current_user + bcolors.ENDC,
@@ -113,6 +132,7 @@ def main():
     hist_agreg()
     hist_sort()
     result()
+    fix_space_user()
 
 
 if __name__ == "__main__":
