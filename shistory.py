@@ -23,6 +23,8 @@ hist_vrac = []
 # timestamp list
 m_keys = []
 
+users_blacklist = ['operator']
+
 
 class bcolors:
     HEADER = '\033[95m'
@@ -37,7 +39,7 @@ class bcolors:
 
 def list_user_homedir():
     for p in pwd.getpwall():
-        if p[6] == '/bin/bash' and p[0] != 'operator':
+        if p[6] == '/bin/bash' and p[0] not in users_blacklist:
             users[p[0]] = p[5]
 
 
@@ -50,7 +52,7 @@ def find_history():
 def timestamp_chg(my_date):
     t_stamp = (
             datetime.datetime.fromtimestamp(
-            int(my_date)
+                int(my_date)
             ).strftime('%Y-%m-%d %H:%M:%S')
     )
     return t_stamp
