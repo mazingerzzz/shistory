@@ -2,7 +2,6 @@
 
 #
 # todo : change color for root
-# todo : fix align
 # requirement : have a variable HISTTIMEFORMAT in your environment
 
 import pwd
