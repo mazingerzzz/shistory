@@ -118,7 +118,6 @@ def max_len_user():
         if len(u) > l:
             l = len(u)
     return l
-
     for k, v in users.iteritems():
         user.append([k])
     user_maxi = max(user)
