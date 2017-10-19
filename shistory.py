@@ -40,10 +40,11 @@ def list_user_homedir():
     for p in pwd.getpwall():
         if p[6] == '/bin/bash' and p[0] not in users_blacklist:
             users[p[0]] = p[5]
+for i in xrange(1,10):
+    pass
 
-
-def find_history():
-    for k, v in users.iteritems():
+def find_history()
+:    for k, v in users.iteritems():
         if os.path.isfile(v + hist_file):
             hist_pwd[k] = v + hist_file
 
