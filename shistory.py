@@ -1,13 +1,14 @@
-#!/usr/bin/env python
+#!/usr/bin/env python2.7
 
 #
 # todo : change color for root
 # requirement : have a variable HISTTIMEFORMAT in your environment
 
-import pwd
-import os.path
-import re
 import datetime
+import os.path
+import pwd
+import re
+import cProfile
 
 # key = user / value = homedir
 users = {}
@@ -17,11 +18,11 @@ hist_pwd = {}
 hist_file = '/.bash_history'
 
 # [{unixtimestamp: [user, command]
+
 hist_vrac = []
 
 # timestamp list
 m_keys = []
-
 users_blacklist = ['operator']
 
 
@@ -40,11 +41,10 @@ def list_user_homedir():
     for p in pwd.getpwall():
         if p[6] == '/bin/bash' and p[0] not in users_blacklist:
             users[p[0]] = p[5]
-for i in xrange(1,10):
-    pass
 
-def find_history()
-:    for k, v in users.iteritems():
+
+def find_history():
+    for k, v in users.iteritems():
         if os.path.isfile(v + hist_file):
             hist_pwd[k] = v + hist_file
 
@@ -99,7 +99,7 @@ def left_space(c):
     if c == 1:
         l_space_nbr = nbr_line - len_c + 1
         return multi_space(l_space_nbr)
-        pass
+
     l_space_nbr = nbr_line - len_c
     return multi_space(l_space_nbr)
 
